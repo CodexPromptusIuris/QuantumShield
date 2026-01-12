@@ -1,12 +1,16 @@
-    from model import build_model
-import tensorflow as tf
+import numpy as np
+from model.hybrid_model import build_model
+
+# Dummy data (ejemplo de "shielding")
+X = np.random.uniform(0, 2 * np.pi, size=(100, 4))
+y = np.random.randint(0, 2, size=(100, 1))
 
 model = build_model()
+model.summary()
 
-model.compile(
-    optimizer=tf.keras.optimizers.Adam(0.01),
-    loss="sparse_categorical_crossentropy",
-    metrics=["accuracy"]
+model.fit(
+    X,
+    y,
+    epochs=10,
+    batch_size=8
 )
-
-model.fit(X_train, y_train, epochs=20, batch_size=2)
