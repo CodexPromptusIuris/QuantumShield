@@ -6,13 +6,12 @@ def build_model():
         tf.keras.layers.Input(shape=(NUM_QUBITS,)),
         quantum_layer,
         tf.keras.layers.Dense(8, activation="relu"),
-        tf.keras.layers.Dense(1, activation="sigmoid")
+        tf.keras.layers.Dense(1, activation="sigmoid"),
     ])
 
     model.compile(
         optimizer="adam",
         loss="binary_crossentropy",
-        metrics=["accuracy"]
+        metrics=["accuracy"],
     )
-
     return model
